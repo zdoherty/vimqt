@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/knotsies/.dotfiles/.i3'
+let g:netrw_dirhist_2='/home/knotsies/.dotfiles/.git'
+let g:netrw_dirhist_3='/home/knotsies/.dotfiles'
+let g:netrw_dirhist_4='/home/knotsies/.dotfiles/.config'
+let g:netrw_dirhist_5='/home/knotsies/.dotfiles'
