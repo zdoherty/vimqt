@@ -39,7 +39,7 @@ set softtabstop=4
 set backspace=2
 
 " Enable line numbers
-set number
+set number relativenumber
 
 " Ignore case to assist with searches
 set ignorecase
