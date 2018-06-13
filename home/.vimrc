@@ -2,8 +2,17 @@
 
 " Bootstrap pathogen from bundle (instead of autoload) and active
 
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+" runtime bundle/vim-pathogen/autoload/pathogen.vim
+" call pathogen#infect()
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tomasr/molokai'
+Plug 'fatih/vim-go'
+Plug 'tpope/vim-surround'
+Plug 'vim-syntastic/syntastic'
+Plug 'godlygeek/tabular'
+Plug 'google/vim-jsonnet'
 
 "}}}
 
