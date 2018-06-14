@@ -7,12 +7,18 @@
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'vim-airline/vim-airline'
 Plug 'tomasr/molokai'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'tpope/vim-surround'
 Plug 'vim-syntastic/syntastic'
 Plug 'godlygeek/tabular'
 Plug 'google/vim-jsonnet'
+Plug 'rodjek/vim-puppet'
+Plug 'ervandew/supertab'
+Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+
+call plug#end()
 
 "}}}
 
@@ -118,34 +124,13 @@ endfunc
 
 "{{{ Mappings
 
-" Unfsck C-Left/Right bindings
-map <ESC>[5D <C-Left>
-map <ESC>[5C <C-Right>
-map! <ESC>[5D <C-left>
-map! <ESC>[5C <C-Right>
-
 " Map two j's to exit insert mode
-inoremap jj <Esc>
+inoremap jk <Esc>
 
 " Open the Project Plugin <F2>
 nnoremap <silent> <F2> :Project<CR>
 
-" Open the NERD tree <F3>
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
-
-" Next Tab
-nnoremap <silent> <C-Right> :tabnext<CR>
-
-" Previous Tab
-nnoremap <silent> <C-Left> :tabprevious<CR>
-
-" New Tab
-nnoremap <silent> <C-t> :tabnew<CR>
-
-" Zap DOS style line endings <F9>
-nnoremap <silent> <F9> :%s/$//g<CR>:%s// /g<CR>
-
-" Paste Mode!  Dang! <F10>
+" Paste Mode F10
 "
 nnoremap <silent> <F10> :call Paste_on_off()<CR>
 set pastetoggle=<F10>
@@ -165,5 +150,9 @@ map n nzz
 " Swap ; and :  Convenient.
 nnoremap ; :
 nnoremap : ;
+
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
 
 "}}}
