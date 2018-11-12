@@ -17,6 +17,9 @@ Plug 'google/vim-jsonnet'
 Plug 'rodjek/vim-puppet'
 Plug 'ervandew/supertab'
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 
 call plug#end()
 
@@ -78,6 +81,31 @@ let NERDTreeIgnore = ['\.pyc$']
 " Puppet and YAML files usually use two space indenting
 autocmd FileType pp setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+
+" N E O V I M
+let g:python3_host_prog = printf("%s/code/envs/neovim3/bin/python", $HOME)
+let g:python_host_prog = printf("%s/code/envs/neovim/bin/python", $HOME)
+
+" deoplete
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
+let g:deoplete#enable_at_startup = 1
+call deoplete#initialize()
+
+" terraform
+let g:terraform_align=1
+
+" terraform autocomplete
+let g:terraform_completion_keys = 1
+
+" syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" page through supertab results in top-down order
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " }}}
 
