@@ -20,6 +20,9 @@ Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.vim/plugged/gocode/vim/symlin
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
+Plug 'tpope/vim-abolish'
+Plug 'zchee/deoplete-jedi'
+
 
 call plug#end()
 
