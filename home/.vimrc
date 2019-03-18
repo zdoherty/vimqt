@@ -17,6 +17,10 @@ Plug 'google/vim-jsonnet'
 Plug 'rodjek/vim-puppet'
 Plug 'ervandew/supertab'
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'hashivim/vim-terraform'
+Plug 'neomake/neomake'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'juliosueiras/vim-terraform-completion'
 
 call plug#end()
 
@@ -26,6 +30,13 @@ call plug#end()
 
 " Necesary  for lots of cool vim things
 set nocompatible
+
+" vim-go mismatch annoyance
+let g:go_version_warning = 0
+
+" neovim in virtualenvs
+let g:python_host_prog = expand('~/.pyenv/versions/neovim2/bin/python')
+let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
 
 " This shows what you are typing as a command.  I love this!
 set showcmd
@@ -78,6 +89,25 @@ let NERDTreeIgnore = ['\.pyc$']
 " Puppet and YAML files usually use two space indenting
 autocmd FileType pp setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+
+" deoplete me
+let g:deoplete#enable_at_startup = 1
+let g:SuperTabDefaultCompletionType = "<c-n>"
+call deoplete#custom#option('max_list', 10)
+
+" T E R R A F O R M
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
+
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+set completeopt-=preview
+
+call deoplete#initialize()
+let g:syntastic_terraform_tffilter_plan = 1
+let g:terraform_completion_keys = 1
+let g:terraform_align=1
+
 
 " }}}
 
@@ -154,5 +184,16 @@ nnoremap : ;
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
+
+" Indent with tab!
+nnoremap <S-Tab> >>
+nnoremap <S-Tab> <<
+inoremap <S-Tab> <C-d>
+
+" Shortcut split navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 "}}}
