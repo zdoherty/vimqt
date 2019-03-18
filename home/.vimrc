@@ -17,10 +17,12 @@ Plug 'google/vim-jsonnet'
 Plug 'rodjek/vim-puppet'
 Plug 'ervandew/supertab'
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'hashivim/vim-terraform'
 Plug 'neomake/neomake'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'juliosueiras/vim-terraform-completion'
+Plug 'tpope/vim-abolish'
+Plug 'zchee/deoplete-jedi'
 
 call plug#end()
 
@@ -108,6 +110,11 @@ let g:syntastic_terraform_tffilter_plan = 1
 let g:terraform_completion_keys = 1
 let g:terraform_align=1
 
+" syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " }}}
 
